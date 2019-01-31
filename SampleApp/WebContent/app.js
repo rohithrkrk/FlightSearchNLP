@@ -14,7 +14,7 @@ var isOpera = typeof window.opr !== "undefined";
 var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
 var isIOSChrome = winNav.userAgent.match("CriOS");
 
-if (isIOSChrome) {
+/*if (isIOSChrome) {
 	recordButton.addEventListener("click", startRecognitionChrome);
 	console.log("Browser is ios chrome")
 } else if(
@@ -29,8 +29,8 @@ if (isIOSChrome) {
 } else { 
 	recordButton.addEventListener("click", startRecording);
 	console.log("Browser is not chrome")
-}
-
+}*/
+recordButton.addEventListener("click", startRecording);
 function startRecording() {
 	console.log("recordButton clicked");
      var constraints = { audio: true, video:false }
@@ -95,7 +95,7 @@ function typeSearchByString(text){
 	 // //var urlValue = base64data;
 	  fd.append("searchString",text);
 	 //fd.append("audio_data",blob);
-	  xhr.open("POST","./record",true);
+	  xhr.open("POST","./witapi",true);
 	  xhr.send(fd);
 }
 
@@ -148,9 +148,9 @@ function createDownloadLink(blob) {
 		  var fd=new FormData();
 		 // var vals=$("#test").attr('src');
 		 // var urlValue = base64data;
-		  fd.append("exmple","555");
-		 fd.append("audio_data",blob);
-		  xhr.open("POST","./record",true);
+		  //fd.append("exmple","555");
+		 fd.append("nonchromeFlag","true");
+		  xhr.open("POST","./witapi",true);
 		  xhr.send(blob);
 		  
 	}, 1000);
