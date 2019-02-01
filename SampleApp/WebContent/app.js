@@ -95,7 +95,7 @@ function typeSearchByString(text){
 	 // //var urlValue = base64data;
 	  fd.append("searchString",text);
 	 //fd.append("audio_data",blob);
-	  xhr.open("POST","./witapi",true);
+	  xhr.open("POST","./record",true);
 	  xhr.send(fd);
 }
 
@@ -150,7 +150,7 @@ function createDownloadLink(blob) {
 		 // var urlValue = base64data;
 		  //fd.append("exmple","555");
 		 fd.append("nonchromeFlag","true");
-		  xhr.open("POST","./witapi",true);
+		  xhr.open("POST","./record",true);
 		  xhr.send(blob);
 		  
 	}, 1000);

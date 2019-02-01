@@ -53,7 +53,7 @@ public class DetectIntentTexts {
         // Build the query with the TextInput
         QueryInput queryInput = QueryInput.newBuilder().setText(textInput).build();
 
-        FlightSearchUtil.translateText(text);
+        //FlightSearchUtil.translateText(text);
         // Performs the detect intent request
         DetectIntentResponse response = sessionsClient.detectIntent(session, queryInput);
 

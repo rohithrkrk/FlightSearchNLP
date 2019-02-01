@@ -65,7 +65,7 @@
 			  var lan=$("#languageSelect").val();
 			  fd.append("languageofApp",lan);
 			 //fd.append("audio_data",blob);
-			  xhr.open("POST","./witapi",true);
+			  xhr.open("POST","./record",true);
 			  /*xhr.setRequestHeader('Content-type', 
 				'application/x-www-form-urlencoded; charset=ISO-8859-1;');*/
 			  xhr.send(fd);
