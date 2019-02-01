@@ -14,7 +14,7 @@ var isOpera = typeof window.opr !== "undefined";
 var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
 var isIOSChrome = winNav.userAgent.match("CriOS");
 
-/*if (isIOSChrome) {
+if (isIOSChrome) {
 	recordButton.addEventListener("click", startRecognitionChrome);
 	console.log("Browser is ios chrome")
 } else if(
@@ -29,8 +29,8 @@ var isIOSChrome = winNav.userAgent.match("CriOS");
 } else { 
 	recordButton.addEventListener("click", startRecording);
 	console.log("Browser is not chrome")
-}*/
-recordButton.addEventListener("click", startRecording);
+}
+//recordButton.addEventListener("click", startRecording);
 function startRecording() {
 	console.log("recordButton clicked");
      var constraints = { audio: true, video:false }

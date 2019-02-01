@@ -1,6 +1,8 @@
 package com.flightsearch.witapi;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,6 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 
+/**
+ * @author A-2574
+ *
+ */
 @MultipartConfig
 public class WitServlet extends HttpServlet {
 	@Override
@@ -25,11 +31,18 @@ public class WitServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String searchString=req.getParameter("searchString");
 		String languageofApp=req.getParameter("languageofApp");
+		//languageofApp="en";
 		 //String nonchromeFlag=req.getParameter("nonchromeFlag");
 		InputStream input = req.getInputStream(); 
-       
-		 if(input.available()>0) {
-			 byte[] bytes = IOUtils.toByteArray(input); 
+		byte[] bytes =IOUtils.toByteArray(input); 
+		/*
+		 * File targetFile = new
+		 * File("C:\\Users\\A-2574\\Desktop\\Rohith\\targetFile.wav"); OutputStream
+		 * outStream = new FileOutputStream(targetFile);  
+		 * IOUtils.toByteArray(input); outStream.write(bytes); outStream.close();
+		 */
+		 if(bytes.length>0) {
+			
 			getApiTextResponsefromWav(bytes, languageofApp);
 			 
 		 }else {
@@ -42,32 +55,26 @@ public class WitServlet extends HttpServlet {
 
 	
 	
-	public static void getApiTextResponse(String searchString,String languageofApp) throws IOException {
-	    String url = "https://api.wit.ai/message?v=20190130&q="+searchString;
-	    String key="";
-	    if(languageofApp.equals("JA")){
-	    key = "HYRE3CGXIV2JUBZLXQOUXOT4GFHPCREE";
-	    }else{
-	    	 key = "CO25MYLYBZ6RA5PU2TSALWXHNKTNOLJ3";	
-	    }
-	    URLConnection connection = new URL(url).openConnection();
-	    connection.setRequestProperty ("Authorization","Bearer " + key);
-	    connection.setDoOutput(true);
-	    BufferedReader response = new BufferedReader(new InputStreamReader(connection.getInputStream(),StandardCharsets.UTF_8));
-	    String line;
-	    while((line = response.readLine()) != null) {
-	        System.out.println(line);
-	    }
-	}
+	
+	  public static void getApiTextResponse(String searchString,String
+	  languageofApp) throws IOException { String url =
+	  "https://api.wit.ai/message?v=20190130&q="+searchString; String key="";
+	  if(languageofApp.equals("JA")){ key = "HYRE3CGXIV2JUBZLXQOUXOT4GFHPCREE";
+	  }else{ key = "PVA4CHCJYCXCA2MRNFVGB5B7FZQEHXD4"; } URLConnection connection =
+	  new URL(url).openConnection(); connection.setRequestProperty
+	  ("Authorization","Bearer " + key); connection.setDoOutput(true);
+	  BufferedReader response = new BufferedReader(new
+	  InputStreamReader(connection.getInputStream())); String line; while((line =
+	  response.readLine()) != null) { System.out.println(line); } }
+	 
 	    public static void getApiTextResponsefromWav(byte[] searchString,String languageofApp) throws IOException {
 	    	String url = "https://api.wit.ai/speech";
 	    	String key="";
-	    	 if(languageofApp.equals("JA")){
-	    		    key = "HYRE3CGXIV2JUBZLXQOUXOT4GFHPCREE";
-	    		    }else{
-	    		    	 key = "CO25MYLYBZ6RA5PU2TSALWXHNKTNOLJ3";	
-	    		    }
-
+		/*
+		 * if(languageofApp.equals("JA")){ key = "HYRE3CGXIV2JUBZLXQOUXOT4GFHPCREE";
+		 * }else{ key = "PVA4CHCJYCXCA2MRNFVGB5B7FZQEHXD4"; }
+		 */
+	    	 key = "PVA4CHCJYCXCA2MRNFVGB5B7FZQEHXD4";
 	        String param1 = "20170203";
 	        String param2 = "command";
 	        String charset = "UTF-8";
@@ -98,4 +105,5 @@ public class WitServlet extends HttpServlet {
 	            System.out.println(line);
 	        }
 	}
+	   
 }
