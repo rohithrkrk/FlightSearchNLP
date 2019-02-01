@@ -41,7 +41,7 @@ public class RecordServlet extends HttpServlet {
         	String searchString=request.getParameter("searchString");
             InputStream input = request.getInputStream(); 
             byte[] bytes = IOUtils.toByteArray(input);
-            String projectId = "flights-e0ff3";
+            String projectId = "flights-7fef5";
     	    String sessionId = UUID.randomUUID().toString();
     	    String languageCode = "en-IN";
     	    DetailsDTO details=null;
