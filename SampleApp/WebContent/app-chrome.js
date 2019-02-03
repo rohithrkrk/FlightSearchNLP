@@ -40,8 +40,7 @@
 			typeSearchWit(text);
 		}
 	function typeSearchWit(text){
-		//var text="2018年10月16日にSYDからPERへのフライトを予約したいです。";
-			
+					
 			var xhr=new XMLHttpRequest();
 			  xhr.onload=function(e) {
 			      if(this.readyState === 4&&this.status == 200) {
@@ -59,14 +58,9 @@
 			  };
 			 var fd=new FormData();
 			 var encoded=encodeURIComponent(text);
-			// var vals=$("#test").attr('src');
-			 // //var urlValue = base64data;
 			  fd.append("searchString",text);
 			  var lan=$("#languageSelect").val();
 			  fd.append("languageofApp",lan);
-			 //fd.append("audio_data",blob);
 			  xhr.open("POST","./record",true);
-			  /*xhr.setRequestHeader('Content-type', 
-				'application/x-www-form-urlencoded; charset=ISO-8859-1;');*/
 			  xhr.send(fd);
 		}

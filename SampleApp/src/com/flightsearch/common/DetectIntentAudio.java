@@ -52,7 +52,7 @@ public class DetectIntentAudio {
 	      // Instructs the speech recognizer how to process the audio content.
 	      InputAudioConfig inputAudioConfig = InputAudioConfig.newBuilder()
 	          .setAudioEncoding(audioEncoding) // audioEncoding = AudioEncoding.AUDIO_ENCODING_LINEAR_16
-	          .setLanguageCode(languageCode).build();// languageCode = "en-US"
+	          .setLanguageCode("en-IN").build();// languageCode = "en-US"
 	           // sampleRateHertz = 16000
 	          
 

@@ -47,15 +47,26 @@ public class DetectIntentTexts {
 
       // Detect intents for each text input
       for (String text : texts) {
+    	  String translatedText="";
+    	  if(languageCode.equals("")){
+    		  translatedText=FlightSearchUtil.translateText(text);
+    	  }else{
+    		  translatedText=text;
+    	  }
         // Set the text (hello) and language code (en-US) for the query
-        Builder textInput = TextInput.newBuilder().setText(text).setLanguageCode(languageCode);
+        Builder textInput = TextInput.newBuilder().setText(translatedText).setLanguageCode("en-IN");
 
+        
         // Build the query with the TextInput
         QueryInput queryInput = QueryInput.newBuilder().setText(textInput).build();
+        
 
-        //FlightSearchUtil.translateText(text);
+        
         // Performs the detect intent request
         DetectIntentResponse response = sessionsClient.detectIntent(session, queryInput);
+        
+        
+       
 
         // Display the query result
         QueryResult queryResult = response.getQueryResult();
@@ -172,8 +183,8 @@ public class DetectIntentTexts {
     String languageCode = "en-US";
 
     texts.add("NRT to CMB");
-
-    detectIntentTexts(projectId, texts, sessionId, languageCode);
+    FlightSearchUtil.translateText("Hello");
+    //detectIntentTexts(projectId, texts, sessionId, languageCode);
   }
   // [END run_application]
 }

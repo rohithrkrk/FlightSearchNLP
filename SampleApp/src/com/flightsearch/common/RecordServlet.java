@@ -38,16 +38,19 @@ public class RecordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         try {
+        	request.setCharacterEncoding("UTF-8");
         	String searchString=request.getParameter("searchString");
+        	String languageCode=request.getParameter("languageofApp");
             InputStream input = request.getInputStream(); 
+            
             byte[] bytes = IOUtils.toByteArray(input);
             String projectId = "flights-7fef5";
     	    String sessionId = UUID.randomUUID().toString();
-    	    String languageCode = "en-IN";
+    	    //String languageCode = "en-IN";
     	    DetailsDTO details=null;
     	    List<String> textlist=new ArrayList<>();
     	    textlist.add(searchString);
-    	    if(searchString!=null&&!searchString.equals("")){
+    	    if(searchString!=null&&!searchString.equals("JA")){
     	    	details= DetectIntentTexts.detectIntentTexts(projectId, textlist, sessionId,languageCode);
     	    }else{
               details=   DetectIntentAudio.detectIntentAudio(projectId, bytes, sessionId, languageCode);

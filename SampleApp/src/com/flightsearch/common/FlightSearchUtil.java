@@ -41,21 +41,14 @@ public class FlightSearchUtil {
 	 
 	 public static String translateText(String input){
 		 Translate translate = TranslateOptions.getDefaultInstance().getService();
-
-		    // The text to translate
-		    String text = "Hello, world!";
-
-		    // Translates some text into Russian
 		    Translation translation =
 		        translate.translate(
-		            text,
-		            TranslateOption.sourceLanguage("en"),
-		            TranslateOption.targetLanguage("ja"));
-
-
-		    System.out.printf("Text: %s%n", text);
+		        		input,
+		            TranslateOption.sourceLanguage("ja"),
+		            TranslateOption.targetLanguage("en"));
+		    System.out.printf("Text: %s%n", input);
 		    System.out.printf("Translation: %s%n", translation.getTranslatedText());
-		    return text;
+		    return translation.getTranslatedText();
 		 
 	 }
 	 
