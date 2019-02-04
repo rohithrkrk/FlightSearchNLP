@@ -48,7 +48,7 @@ public class DetectIntentTexts {
       // Detect intents for each text input
       for (String text : texts) {
     	  String translatedText="";
-    	  if(languageCode.equals("")){
+    	  if(languageCode.equals("JA")){
     		  translatedText=FlightSearchUtil.translateText(text);
     	  }else{
     		  translatedText=text;

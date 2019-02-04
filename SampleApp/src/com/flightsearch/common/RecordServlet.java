@@ -50,7 +50,7 @@ public class RecordServlet extends HttpServlet {
     	    DetailsDTO details=null;
     	    List<String> textlist=new ArrayList<>();
     	    textlist.add(searchString);
-    	    if(searchString!=null&&!searchString.equals("JA")){
+    	    if(searchString!=null&&!searchString.equals("")){
     	    	details= DetectIntentTexts.detectIntentTexts(projectId, textlist, sessionId,languageCode);
     	    }else{
               details=   DetectIntentAudio.detectIntentAudio(projectId, bytes, sessionId, languageCode);

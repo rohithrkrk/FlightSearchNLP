@@ -38,9 +38,10 @@
 			$("#textHide").val(text);
 			var text = $("#textHide").val();
 			typeSearchWit(text);
+			console.log(text);
 		}
 	function typeSearchWit(text){
-					
+			//var text="金曜日にシドニーからモスクワへ旅行したいのですが。";		
 			var xhr=new XMLHttpRequest();
 			  xhr.onload=function(e) {
 			      if(this.readyState === 4&&this.status == 200) {

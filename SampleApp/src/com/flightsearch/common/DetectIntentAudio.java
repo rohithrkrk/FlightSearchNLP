@@ -169,7 +169,7 @@ public class DetectIntentAudio {
 	    String projectId = "air-search-agent";
 	    String sessionId = UUID.randomUUID().toString();
 	    String languageCode = "en-US";
-
+	    FlightSearchUtil.translateText("Hello");
 		
 	    System.out.print(System.getenv("JAVA_HOME"));
 	    System.out.print(System.getenv("GOOGLE_APPLICATION_CREDENTIALS"));
