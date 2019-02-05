@@ -57,12 +57,12 @@ public class FlightSearchUtil {
 	 }
 	 
 	 
-	 public static void main(String... args) throws Exception {
+	 public static List<String> speechToText(byte[] wavData) throws Exception {
 		    // Instantiates a client
 		    try (SpeechClient speechClient = SpeechClient.create()) {
 
 		      // The path to the audio file to transcribe
-		      String fileName = "./resources/audio.raw";
+		      String fileName = "C://Users//A-2574//Desktop//DFI Phase 2//2019-02-05T06_38_00.055Z.wav";
 
 		      // Reads the audio file into memory
 		      Path path = Paths.get(fileName);
@@ -72,7 +72,7 @@ public class FlightSearchUtil {
 		      // Builds the sync recognize request
 		      RecognitionConfig config = RecognitionConfig.newBuilder()
 		          .setEncoding(AudioEncoding.LINEAR16)
-		          .setSampleRateHertz(16000)
+		          
 		          .setLanguageCode("en-US")
 		          .build();
 		      RecognitionAudio audio = RecognitionAudio.newBuilder()
@@ -82,15 +82,22 @@ public class FlightSearchUtil {
 		      // Performs speech recognition on the audio file
 		      RecognizeResponse response = speechClient.recognize(config, audio);
 		      List<SpeechRecognitionResult> results = response.getResultsList();
-
+              List<String> transcriptedList=new ArrayList<String>();
 		      for (SpeechRecognitionResult result : results) {
 		        // There can be several alternative transcripts for a given chunk of speech. Just use the
 		        // first (most likely) one here.
 		        SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
 		        System.out.printf("Transcription: %s%n", alternative.getTranscript());
+		        transcriptedList.add(alternative.getTranscript());
 		      }
+		      return transcriptedList;
 		    }
+		    
 		  }
+	 
+	/*
+	 * public static void main(String args[]) throws Exception { speechToText(); }
+	 */
 	 
 	 public static void transcribeMultiLanguage(byte[] content) throws Exception {
 		 // Path path = Paths.get(fileName);

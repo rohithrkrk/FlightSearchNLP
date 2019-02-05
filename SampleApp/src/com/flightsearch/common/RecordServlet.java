@@ -53,7 +53,11 @@ public class RecordServlet extends HttpServlet {
     	    if(searchString!=null&&!searchString.equals("")){
     	    	details= DetectIntentTexts.detectIntentTexts(projectId, textlist, sessionId,languageCode);
     	    }else{
-              details=   DetectIntentAudio.detectIntentAudio(projectId, bytes, sessionId, languageCode);
+    	    	if(languageCode.equals("JA")) {  	    		
+    	    		details= DetectIntentTexts.detectIntentTexts(projectId, FlightSearchUtil.speechToText(bytes), sessionId,languageCode);
+    	    	}else {
+                   details=   DetectIntentAudio.detectIntentAudio(projectId, bytes, sessionId, languageCode);
+    	    	}
     	    }
     	    PrintWriter out = response.getWriter();
             response.setContentType("application/json");

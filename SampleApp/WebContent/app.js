@@ -169,6 +169,7 @@ function createDownloadLink(blob) {
 		      }
 		  };
 		  var fd=new FormData();
+		  var lan=""
 		 // var vals=$("#test").attr('src');
 		 // var urlValue = base64data;
 		  //fd.append("exmple","555");

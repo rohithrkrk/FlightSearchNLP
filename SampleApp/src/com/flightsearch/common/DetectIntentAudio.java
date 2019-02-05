@@ -54,8 +54,7 @@ public class DetectIntentAudio {
 	          .setAudioEncoding(audioEncoding) // audioEncoding = AudioEncoding.AUDIO_ENCODING_LINEAR_16
 	          .setLanguageCode("en-IN").build();// languageCode = "en-US"
 	           // sampleRateHertz = 16000
-	          
-
+	   
 	      // Build the query with the InputAudioConfig
 	      QueryInput queryInput = QueryInput.newBuilder().setAudioConfig(inputAudioConfig).build();
 
