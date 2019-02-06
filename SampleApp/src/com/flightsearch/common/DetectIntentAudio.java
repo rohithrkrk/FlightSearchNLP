@@ -60,7 +60,7 @@ public class DetectIntentAudio {
 
 	      // Read the bytes from the audio file
 	    // byte[] inputAudio = Files.readAllBytes(Paths.get(audioFilePath));
-            FlightSearchUtil.transcribeMultiLanguage(audioFilePath);
+           // FlightSearchUtil.transcribeMultiLanguage(audioFilePath);
 	      // Build the DetectIntentRequest
 	      DetectIntentRequest request = DetectIntentRequest.newBuilder()
 	          .setSession(session.toString())

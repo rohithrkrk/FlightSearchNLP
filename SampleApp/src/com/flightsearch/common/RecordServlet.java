@@ -40,10 +40,10 @@ public class RecordServlet extends HttpServlet {
         try {
         	request.setCharacterEncoding("UTF-8");
         	String searchString=request.getParameter("searchString");
-        	String languageCode=request.getParameter("languageofApp");
-            InputStream input = request.getInputStream(); 
-            
+        	String languageCode=request.getParameter("languageofApp")==null?request.getHeader("language"):request.getParameter("languageofApp");
+            InputStream input = request.getInputStream();     
             byte[] bytes = IOUtils.toByteArray(input);
+            System.out.println(bytes.toString());
             String projectId = "flights-7fef5";
     	    String sessionId = UUID.randomUUID().toString();
     	    //String languageCode = "en-IN";

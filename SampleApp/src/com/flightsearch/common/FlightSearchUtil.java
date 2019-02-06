@@ -62,12 +62,13 @@ public class FlightSearchUtil {
 		    try (SpeechClient speechClient = SpeechClient.create()) {
 
 		      // The path to the audio file to transcribe
-		      String fileName = "C://Users//A-2574//Desktop//DFI Phase 2//2019-02-05T06_38_00.055Z.wav";
+		      //String fileName = "C://Users//A-2574//Desktop//DFI Phase 2//2019-02-05T06_38_00.055Z.wav";
 
-		      // Reads the audio file into memory
-		      Path path = Paths.get(fileName);
-		      byte[] data = Files.readAllBytes(path);
-		      ByteString audioBytes = ByteString.copyFrom(data);
+			/*
+			 * // Reads the audio file into memory Path path = Paths.get(fileName); byte[]
+			 * data = Files.readAllBytes(path);
+			 */
+		      ByteString audioBytes = ByteString.copyFrom(wavData);
 
 		      // Builds the sync recognize request
 		      RecognitionConfig config = RecognitionConfig.newBuilder()

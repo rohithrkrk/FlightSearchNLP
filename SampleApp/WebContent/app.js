@@ -58,7 +58,7 @@ function stopRecording() {
 	rec.exportWAV(createDownloadLink,"audio/wav");
 }
 function searchFlightsbytext(){
-	var text=$("#typeSearch").val().trim();
+	var text=$("#typeSearch").val();
 	if(text!=""){
 		var text=$("#typeSearch").val();
 		typeSearchByString(text);
@@ -66,6 +66,9 @@ function searchFlightsbytext(){
 	var from=$("#from").val();
      var dep=$("#to").val();
 	var travelDate=$("#travel").val();
+	if(travelDate==""||travelDate==null||travelDate==undefined){
+  	  travelDate=todayDate;
+    }
 	  window.open("https://www.google.com/flights?"
 	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
 	  console.log("https://www.google.com/flights?"
@@ -97,13 +100,16 @@ function typeSearchByString(text){
 	
 	var xhr=new XMLHttpRequest();
 	  xhr.onload=function(e) {
-		  debugger;
+		 
 	      if(this.readyState === 4&&this.status == 200) {
 	          console.log("Server returned: ",e.target.responseText);
 	         var responses= e.target.responseText.split(',');
 	          var from=responses[0].trim();
 	          var dep=responses[1].trim();
 	          var travelDate=responses[2].trim();
+	          if(travelDate==""||travelDate==null||travelDate==undefined){
+	        	  travelDate=todayDate;
+	          }
 	         
 	        window.open("https://www.google.com/flights?"
 	      	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
@@ -169,12 +175,15 @@ function createDownloadLink(blob) {
 		      }
 		  };
 		  var fd=new FormData();
-		  var lan=""
+		  var lan=$("#languageSelect").val();
+		//  var lan=""
 		 // var vals=$("#test").attr('src');
 		 // var urlValue = base64data;
 		  //fd.append("exmple","555");
-		 fd.append("nonchromeFlag","true");
+		 //fd.append("language","true");
+		  
 		  xhr.open("POST","./record",true);
+		  xhr.setRequestHeader("language", lan);
 		  xhr.send(blob);
 		  
 	}, 1000);

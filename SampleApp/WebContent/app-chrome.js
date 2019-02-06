@@ -1,6 +1,22 @@
 	  
 		var recognition;
-		function startRecognitionChrome() {
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth() + 1; //January is 0!
+		var yyyy = today.getFullYear();
+
+		if (dd < 10) {
+		  dd = '0' + dd;
+		}
+
+		if (mm < 10) {
+		  mm = '0' + mm;
+		}
+
+		todayDate =  dd + '-' +mm+'-'+ yyyy;
+		console.log(todayDate);
+		
+	function startRecognitionChrome() {
 			recognition = new webkitSpeechRecognition();
 			recognition.onstart = function(event) {
 				//updateRec();
@@ -35,8 +51,8 @@
 		}
 
 		function setInput(text) {
-			$("#textHide").val(text);
-			var text = $("#textHide").val();
+			$("#typeSearch").val(text);
+			var text = $("#typeSearch").val();
 			typeSearchWit(text);
 			console.log(text);
 		}
@@ -50,11 +66,15 @@
 			          var from=responses[0].trim();
 			          var dep=responses[1].trim();
 			          var travelDate=responses[2].trim();
+			          if(travelDate==""||travelDate==null||travelDate==undefined){
+			        	  travelDate=todayDate;
+			          }
 			         
 			        window.open("https://www.google.com/flights?"
 			      	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
 			        console.log("https://www.google.com/flights?"
 			      	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
+			        
 			      }
 			  };
 			 var fd=new FormData();
