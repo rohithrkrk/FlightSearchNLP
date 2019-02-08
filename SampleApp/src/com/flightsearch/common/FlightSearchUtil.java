@@ -57,7 +57,13 @@ public class FlightSearchUtil {
 	 }
 	 
 	 
-	 public static List<String> speechToText(byte[] wavData) throws Exception {
+	 public static List<String> speechToText(byte[] wavData,String languageCode) throws Exception {
+		 
+		     if(languageCode.equals("JA")) {
+		    	 languageCode="ja";
+		     }else {
+		    	 languageCode="en-IN";
+		     }
 		    // Instantiates a client
 		    try (SpeechClient speechClient = SpeechClient.create()) {
 
@@ -74,7 +80,7 @@ public class FlightSearchUtil {
 		      RecognitionConfig config = RecognitionConfig.newBuilder()
 		          .setEncoding(AudioEncoding.LINEAR16)
 		          
-		          .setLanguageCode("en-US")
+		          .setLanguageCode(languageCode)
 		          .build();
 		      RecognitionAudio audio = RecognitionAudio.newBuilder()
 		          .setContent(audioBytes)

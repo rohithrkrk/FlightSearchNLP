@@ -13,6 +13,7 @@ var vendorName = winNav.vendor;
 var isOpera = typeof window.opr !== "undefined";
 var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
 var isIOSChrome = winNav.userAgent.match("CriOS");
+$("#alert").hide();
 
 if (isIOSChrome) {
 	recordButton.addEventListener("click", startRecognitionChrome);
@@ -30,7 +31,7 @@ if (isIOSChrome) {
 	recordButton.addEventListener("click", startRecording);
 	console.log("Browser is not chrome")
 }
-//recordButton.addEventListener("click", startRecording);
+/*recordButton.addEventListener("click", startRecording);*/
 function startRecording() {
 	console.log("recordButton clicked");
      var constraints = { audio: true, video:false }
@@ -69,10 +70,14 @@ function searchFlightsbytext(){
 	if(travelDate==""||travelDate==null||travelDate==undefined){
   	  travelDate=todayDate;
     }
+	 if(from==""||dep==""){
+		  $("#alert").show('slow');
+     }else{
 	  window.open("https://www.google.com/flights?"
 	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
 	  console.log("https://www.google.com/flights?"
 	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
+     }
 	}
 	
 }
@@ -110,11 +115,14 @@ function typeSearchByString(text){
 	          if(travelDate==""||travelDate==null||travelDate==undefined){
 	        	  travelDate=todayDate;
 	          }
-	         
+	          if(from==""||dep==""){
+	        	  $("#alert").show('slow');
+	          }else{
 	        window.open("https://www.google.com/flights?"
 	      	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
 	        console.log("https://www.google.com/flights?"
 	      	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
+	          }
 	      }
 	  };
 	 var fd=new FormData();
@@ -168,10 +176,14 @@ function createDownloadLink(blob) {
 		         // from="Columbo";
 		          //dep="Delhi"
 		          //travelDate="12-05-2019"	  
+		          if(from==""||dep==""){
+		        	  $("#alert").show('slow');
+		          }else{
 		        window.open("https://www.google.com/flights?"
 		      	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
 		        console.log("https://www.google.com/flights?"
 		      	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
+		          }
 		      }
 		  };
 		  var fd=new FormData();

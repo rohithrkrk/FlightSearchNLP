@@ -14,8 +14,7 @@
 		}
 
 		todayDate =  dd + '-' +mm+'-'+ yyyy;
-		console.log(todayDate);
-		
+		console.log(todayDate);		
 	function startRecognitionChrome() {
 			recognition = new webkitSpeechRecognition();
 			recognition.onstart = function(event) {
@@ -70,10 +69,14 @@
 			        	  travelDate=todayDate;
 			          }
 			         
+			          if(from==""||dep==""){
+			        	  $("#alert").show('slow');
+			          }else{
 			        window.open("https://www.google.com/flights?"
 			      	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
 			        console.log("https://www.google.com/flights?"
 			      	    		+"q="+from+"+to+"+dep+"+on+"+travelDate);
+			          }
 			        
 			      }
 			  };

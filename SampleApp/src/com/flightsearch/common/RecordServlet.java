@@ -54,7 +54,7 @@ public class RecordServlet extends HttpServlet {
     	    	details= DetectIntentTexts.detectIntentTexts(projectId, textlist, sessionId,languageCode);
     	    }else{
     	    	if(languageCode.equals("JA")) {  	    		
-    	    		details= DetectIntentTexts.detectIntentTexts(projectId, FlightSearchUtil.speechToText(bytes), sessionId,languageCode);
+    	    		details= DetectIntentTexts.detectIntentTexts(projectId, FlightSearchUtil.speechToText(bytes,languageCode), sessionId,languageCode);
     	    	}else {
                    details=   DetectIntentAudio.detectIntentAudio(projectId, bytes, sessionId, languageCode);
     	    	}
