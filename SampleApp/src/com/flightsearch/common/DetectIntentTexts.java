@@ -98,6 +98,8 @@ public class DetectIntentTexts {
 	            		   }
 	        			 // System.out.println(from);
 	        		   }
+	        		   }else{
+	        			    from= entry.getValue().getStringValue();
 	        		   }
 	        	   }
 	        	   
@@ -118,6 +120,9 @@ public class DetectIntentTexts {
    			 // System.out.println("To location"+to);
    		   }
    		   }
+	           }
+	    else{
+	        	   to=entry.getValue().getStringValue();
 	           }
 	      }
     
